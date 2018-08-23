@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 
 from mcts import MCTS
 from NnetHelper import NnetHelper
@@ -6,7 +7,7 @@ from NnetHelper import NnetHelper
 
 class Solver():
 
-	def __init__(self, game=None, nnet_class=None, num_sims=25, num_iters=5, num_battles=40, num_episodes=25, num_epoch=10):
+	def __init__(self, game=None, nnet_class=None, num_sims=25, num_iters=5, num_battles=40, num_episodes=25, num_epoch=10, mem_length=2):
 		self.game = game
 		self.nn_class = nnet_class
 		self.nnet_helper = NnetHelper(num_epoch=num_epoch)
@@ -15,9 +16,9 @@ class Solver():
 		self.num_iters = num_iters
 		self.num_battles = num_battles
 		self.num_episodes = num_episodes
+		self.training_mem_length = mem_length
 		
 		self.win_threshold = 0.5
-		self.training_mem_length = 2
 		self.temp_threshold = 8
 
 		self.num_inputs = game.starting_board.size
@@ -27,7 +28,7 @@ class Solver():
 	def policy_iteration(self):
 		
 		total_training_examples = []
-		nnet = self.nn_class(num_inputs=self.num_inputs, num_actions=self.num_actions, game_type='c4_6x7')
+		nnet = self.nn_class(num_inputs=self.num_inputs, num_actions=self.num_actions)
 		
 		for i in range(self.num_iters):
 			

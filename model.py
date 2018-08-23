@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 class C4Net_6x7(nn.Module):
 
-	def __init__(self, num_inputs=None, num_actions=None, game_type=None):
+	def __init__(self, num_inputs=None, num_actions=None):
 		super(C4Net_6x7, self).__init__()
 
 		self.main = nn.Sequential()
@@ -50,7 +50,7 @@ class C4Net_6x7(nn.Module):
 
 class C4Net_5x5(nn.Module):
 
-	def __init__(self, num_inputs=None, num_actions=None, game_type=None):
+	def __init__(self, num_inputs=None, num_actions=None):
 		super(C4Net_5x5, self).__init__()
 
 		self.main = nn.Sequential()
@@ -92,7 +92,7 @@ class C4Net_5x5(nn.Module):
 
 class XandosNet(nn.Module):
 
-	def __init__(self, num_inputs=None, num_actions=9, game_type=None):
+	def __init__(self, num_inputs=None, num_actions=9):
 		super(XandosNet, self).__init__()
 
 		self.main = nn.Sequential()
