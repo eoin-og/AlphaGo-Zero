@@ -29,4 +29,5 @@ Three different games were tested out. All were trained on a single (slow) CPU.
 
 ## Requirements
 Pytorch >= 0.4
+
 NumPy
